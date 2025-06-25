@@ -1,24 +1,713 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>elbi-homes-landing-page</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elbi Homes - Premium Properties in Birmingham</title>
+    <meta name="description" content="Elbi Homes offers premium real estate in Birmingham, England. Explore our apartments, lofts, and affordable housing options in the heart of the city.">
+    <meta name="author" content="Elbi Homes">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Elbi Homes - Premium Properties in Birmingham">
+    <meta property="og:description" content="Discover your dream home in Birmingham with Elbi Homes. Premium apartments and lofts in the city center.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FFF8E7',
+                        'cream-dark': '#F3E8D2',
+                        'gray-medium': '#4B5563',
+                        'gray-dark': '#1F2937'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(31, 41, 55, 0.6), rgba(31, 41, 55, 0.6)), 
+                            url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            /* Replace with: Your premium Birmingham city apartment building image */
+        }
+        
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-cream text-gray-dark">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50" role="navigation" aria-label="Main navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold text-gray-dark">Elbi Homes</h1>
+                </div>
 
-    <meta property="og:title" content="elbi-homes-landing-page" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="text-gray-medium hover:text-gray-dark px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Home
+                        </a>
+                        <a href="#homes" class="text-gray-medium hover:text-gray-dark px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Our Homes
+                        </a>
+                        <a href="#pricing" class="text-gray-medium hover:text-gray-dark px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Pricing
+                        </a>
+                        <a href="#contact" class="text-gray-medium hover:text-gray-dark px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            Contact Us
+                        </a>
+                        <a href="#about" class="text-gray-medium hover:text-gray-dark px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                            About Us
+                        </a>
+                    </div>
+                </div>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-btn" class="bg-white p-2 rounded-md text-gray-medium hover:text-gray-dark hover:bg-cream-dark focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-medium transition-colors duration-200" aria-expanded="false" aria-label="Toggle navigation menu">
+                        <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="mobile-menu lg:hidden fixed top-16 left-0 right-0 bottom-0 bg-white shadow-lg z-40">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-gray-medium hover:text-gray-dark hover:bg-cream-dark block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+                    Home
+                </a>
+                <a href="#homes" class="text-gray-medium hover:text-gray-dark hover:bg-cream-dark block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+                    Our Homes
+                </a>
+                <a href="#pricing" class="text-gray-medium hover:text-gray-dark hover:bg-cream-dark block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+                    Pricing
+                </a>
+                <a href="#contact" class="text-gray-medium hover:text-gray-dark hover:bg-cream-dark block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+                    Contact Us
+                </a>
+                <a href="#about" class="text-gray-medium hover:text-gray-dark hover:bg-cream-dark block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+                    About Us
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-4xl mx-auto fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    Discover Your Dream Home with 
+                    <span class="text-cream-dark"> Elbi Homes</span> in Birmingham
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
+                    Premium city apartments and lofts designed for modern living in Birmingham's vibrant heart
+                </p>
+                <button class="bg-cream-dark text-gray-dark px-8 py-4 rounded-lg text-lg font-semibold hover:bg-cream transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <span>Explore Our Homes</span>
+                    <svg class="inline ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Homes Section -->
+    <section id="homes" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+                    Our Homes
+                </h2>
+                <p class="text-lg text-gray-medium max-w-2xl mx-auto">
+                    Discover our collection of premium apartments and lofts in Birmingham's most desirable locations
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- City Centre Apartments -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern city centre apartment" class="w-full h-64 object-cover" loading="lazy">
+                        <!-- Replace with: Your city centre apartment complex image -->
+                        <div class="absolute top-4 left-4">
+                            <div class="bg-cream-dark text-gray-dark px-3 py-1 rounded-full text-sm font-semibold">
+                                Available Now
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-dark mb-3">
+                            City Centre Apartments
+                        </h3>
+                        <p class="text-gray-medium mb-4">
+                            Modern 1-2 bedroom apartments in Birmingham's bustling city centre. Walking distance to shops, restaurants, and transport links.
+                        </p>
+                        <button class="bg-gray-dark text-white px-6 py-2 rounded-md hover:bg-gray-medium transition-colors duration-200">
+                            <span>View Details</span>
+                            <svg class="inline ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Luxury Lofts -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1493397212122-2b85dda8106b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury loft space" class="w-full h-64 object-cover" loading="lazy">
+                        <!-- Replace with: Your luxury loft development image -->
+                        <div class="absolute top-4 left-4">
+                            <div class="bg-cream-dark text-gray-dark px-3 py-1 rounded-full text-sm font-semibold">
+                                Premium
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-dark mb-3">
+                            Industrial Lofts
+                        </h3>
+                        <p class="text-gray-medium mb-4">
+                            Converted warehouse lofts featuring high ceilings, exposed brick, and modern amenities in Birmingham's creative quarter.
+                        </p>
+                        <button class="bg-gray-dark text-white px-6 py-2 rounded-md hover:bg-gray-medium transition-colors duration-200">
+                            <span>View Details</span>
+                            <svg class="inline ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Affordable Studios -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Affordable studio apartment" class="w-full h-64 object-cover" loading="lazy">
+                        <!-- Replace with: Your affordable studio apartment image -->
+                        <div class="absolute top-4 left-4">
+                            <div class="bg-cream-dark text-gray-dark px-3 py-1 rounded-full text-sm font-semibold">
+                                Affordable
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-dark mb-3">
+                            Studio Apartments
+                        </h3>
+                        <p class="text-gray-medium mb-4">
+                            Compact and efficient studio apartments perfect for young professionals and students. Great value in prime Birmingham locations.
+                        </p>
+                        <button class="bg-gray-dark text-white px-6 py-2 rounded-md hover:bg-gray-medium transition-colors duration-200">
+                            <span>View Details</span>
+                            <svg class="inline ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+                    Affordable Birmingham Living
+                </h2>
+                <p class="text-lg text-gray-medium mb-8 max-w-2xl mx-auto">
+                    Competitive pricing for quality apartments in Birmingham's best locations
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Studio Pricing -->
+                <div class="bg-white rounded-lg shadow-lg p-8 fade-in">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-dark mb-4">Studio Apartments</h3>
+                        <div class="text-4xl font-bold text-gray-dark mb-2">£650</div>
+                        <div class="text-gray-medium mb-6">per month</div>
+                        <ul class="text-left space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                25-30 sqm living space
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Fully furnished
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Bills included
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                City centre location
+                            </li>
+                        </ul>
+                        <button class="w-full bg-gray-dark text-white py-3 px-6 rounded-lg hover:bg-gray-medium transition-colors duration-200">
+                            View Available Studios
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 1-Bed Pricing -->
+                <div class="bg-white rounded-lg shadow-lg p-8 transform scale-105 border-2 border-cream-dark fade-in">
+                    <div class="text-center">
+                        <div class="bg-cream-dark text-gray-dark px-3 py-1 rounded-full text-sm font-semibold mb-4 inline-block">
+                            Most Popular
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-dark mb-4">1-Bedroom Apartments</h3>
+                        <div class="text-4xl font-bold text-gray-dark mb-2">£850</div>
+                        <div class="text-gray-medium mb-6">per month</div>
+                        <ul class="text-left space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                45-55 sqm living space
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Separate bedroom
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Modern kitchen
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Balcony included
+                            </li>
+                        </ul>
+                        <button class="w-full bg-cream-dark text-gray-dark py-3 px-6 rounded-lg hover:bg-gray-dark hover:text-white transition-colors duration-200">
+                            View 1-Bed Apartments
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Luxury Loft Pricing -->
+                <div class="bg-white rounded-lg shadow-lg p-8 fade-in">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-dark mb-4">Luxury Lofts</h3>
+                        <div class="text-4xl font-bold text-gray-dark mb-2">£1,200</div>
+                        <div class="text-gray-medium mb-6">per month</div>
+                        <ul class="text-left space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                70-90 sqm living space
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                High ceilings
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Exposed brick features
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Premium finishes
+                            </li>
+                        </ul>
+                        <button class="w-full bg-gray-dark text-white py-3 px-6 rounded-lg hover:bg-gray-medium transition-colors duration-200">
+                            View Luxury Lofts
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+                        About Elbi Homes
+                    </h2>
+                    <p class="text-lg text-gray-medium mb-6">
+                        Trusted real estate experts in Birmingham since 2010, we've been helping families and individuals find their perfect homes throughout the West Midlands.
+                    </p>
+                    <p class="text-gray-medium mb-8">
+                        Our commitment to excellence, attention to detail, and deep understanding of the Birmingham property market makes us the preferred choice for discerning buyers and renters looking for quality city living.
+                    </p>
+                    <button class="bg-cream-dark text-gray-dark px-6 py-3 rounded-lg hover:bg-gray-dark hover:text-white transition-colors duration-200">
+                        <span>Learn More About Us</span>
+                        <svg class="inline ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="relative fade-in">
+                    <img src="https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Birmingham city architecture" class="rounded-lg shadow-lg" loading="lazy">
+                    <!-- Replace with: Your team photo or Birmingham office image -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+                    Contact Us
+                </h2>
+                <p class="text-lg text-gray-medium max-w-2xl mx-auto">
+                    Ready to find your perfect Birmingham home? Get in touch with our expert team today
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white rounded-lg shadow-lg p-8 fade-in">
+                    <h3 class="text-2xl font-bold text-gray-dark mb-6">Send us a message</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-dark mb-2">
+                                Full Name *
+                            </label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cream-dark focus:border-transparent transition-colors duration-200" placeholder="Enter your full name">
+                            <div id="name-error" class="mt-1 text-sm text-red-600 hidden"></div>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-dark mb-2">
+                                Email Address *
+                            </label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cream-dark focus:border-transparent transition-colors duration-200" placeholder="Enter your email address">
+                            <div id="email-error" class="mt-1 text-sm text-red-600 hidden"></div>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-dark mb-2">
+                                Message *
+                            </label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cream-dark focus:border-transparent transition-colors duration-200 resize-vertical" placeholder="Tell us about your property requirements..."></textarea>
+                            <div id="message-error" class="mt-1 text-sm text-red-600 hidden"></div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gray-dark text-white py-3 px-6 rounded-lg hover:bg-gray-medium transition-colors duration-200 font-semibold">
+                            <span>Send Message</span>
+                            <svg class="inline ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="bg-white rounded-lg shadow-lg p-8 fade-in">
+                        <h3 class="text-2xl font-bold text-gray-dark mb-6">Get in Touch</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <svg class="h-6 w-6 text-cream-dark mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <div>
+                                    <h4 class="font-semibold text-gray-dark">Visit Our Office</h4>
+                                    <p class="text-gray-medium">123 High Street<br>Birmingham, B1 1AA<br>United Kingdom</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <svg class="h-6 w-6 text-cream-dark mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                                <div>
+                                    <h4 class="font-semibold text-gray-dark">Call Us</h4>
+                                    <p class="text-gray-medium">+44 121 555 0123</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <svg class="h-6 w-6 text-cream-dark mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <div>
+                                    <h4 class="font-semibold text-gray-dark">Email Us</h4>
+                                    <p class="text-gray-medium">info@elbihomes.co.uk</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-dark text-white rounded-lg shadow-lg p-8 fade-in">
+                        <h3 class="text-xl font-bold mb-4">Office Hours</h3>
+                        <div class="space-y-2 text-gray-300">
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            <p>Saturday: 10:00 AM - 4:00 PM</p>
+                            <p>Sunday: By appointment only</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Elbi Homes</h3>
+                    <p class="text-gray-300 mb-4">
+                        Premium real estate solutions in Birmingham, England. Your trusted partner in finding the perfect city home.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-cream-dark transition-colors duration-200">Home</a></li>
+                        <li><a href="#homes" class="text-gray-300 hover:text-cream-dark transition-colors duration-200">Our Homes</a></li>
+                        <li><a href="#pricing" class="text-gray-300 hover:text-cream-dark transition-colors duration-200">Pricing</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-cream-dark transition-colors duration-200">Contact Us</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-cream-dark transition-colors duration-200">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>123 High Street, Birmingham, B1 1AA</p>
+                        <p>Phone: +44 121 555 0123</p>
+                        <p>Email: info@elbihomes.co.uk</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2025 Elbi Homes. All rights reserved. | <a href="#" class="hover:text-cream-dark transition-colors duration-200">Privacy Policy</a> | <a href="#" class="hover:text-cream-dark transition-colors duration-200">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        let isMenuOpen = false;
+
+        mobileMenuBtn.addEventListener('click', function() {
+            isMenuOpen = !isMenuOpen;
+            mobileMenu.classList.toggle('active', isMenuOpen);
+            menuIcon.classList.toggle('hidden', isMenuOpen);
+            closeIcon.classList.toggle('hidden', !isMenuOpen);
+            mobileMenuBtn.setAttribute('aria-expanded', isMenuOpen);
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                isMenuOpen = false;
+                mobileMenu.classList.remove('active');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', false);
+            });
+        });
+
+        // Close mobile menu when pressing Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isMenuOpen) {
+                isMenuOpen = false;
+                mobileMenu.classList.remove('active');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', false);
+            }
+        });
+
+        // Form validation
+        const contactForm = document.getElementById('contact-form');
+        
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function showError(fieldId, message) {
+            const errorElement = document.getElementById(fieldId + '-error');
+            const inputElement = document.getElementById(fieldId);
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+            inputElement.classList.add('border-red-500');
+        }
+
+        function clearError(fieldId) {
+            const errorElement = document.getElementById(fieldId + '-error');
+            const inputElement = document.getElementById(fieldId);
+            errorElement.classList.add('hidden');
+            inputElement.classList.remove('border-red-500');
+        }
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            ['name', 'email', 'message'].forEach(field => clearError(field));
+            
+            const formData = new FormData(contactForm);
+            const name = formData.get('name').trim();
+            const email = formData.get('email').trim();
+            const message = formData.get('message').trim();
+            
+            let hasErrors = false;
+
+            // Validate name
+            if (!name) {
+                showError('name', 'Name is required');
+                hasErrors = true;
+            }
+
+            // Validate email
+            if (!email) {
+                showError('email', 'Email is required');
+                hasErrors = true;
+            } else if (!validateEmail(email)) {
+                showError('email', 'Please enter a valid email address');
+                hasErrors = true;
+            }
+
+            // Validate message
+            if (!message) {
+                showError('message', 'Message is required');
+                hasErrors = true;
+            }
+
+            if (!hasErrors) {
+                // Form is valid - simulate submission
+                console.log('Form submitted:', { name, email, message });
+                alert('Thank you for your message! We\'ll get back to you soon.');
+                contactForm.reset();
+            }
+        });
+
+        // Clear errors on input
+        ['name', 'email', 'message'].forEach(field => {
+            document.getElementById(field).addEventListener('input', function() {
+                clearError(field);
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize hero animation
+        window.addEventListener('load', function() {
+            const heroElement = document.querySelector('#home .fade-in');
+            if (heroElement) {
+                setTimeout(() => {
+                    heroElement.classList.add('visible');
+                }, 300);
+            }
+        });
+    </script>
+</body>
 </html>
