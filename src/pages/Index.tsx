@@ -1,15 +1,26 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Home, Building, DollarSign, Mail, Info, ArrowRight, Phone, MapPin, Star } from 'lucide-react';
 
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: ''
   });
-  const [formErrors, setFormErrors] = useState({});
+  const [formErrors, setFormErrors] = useState<FormErrors>({});
 
   // Close menu when clicking outside or pressing ESC
   useEffect(() => {
@@ -42,7 +53,7 @@ const Index = () => {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const errors: any = {};
+    const errors: FormErrors = {};
 
     if (!formData.name.trim()) {
       errors.name = 'Name is required';
@@ -76,7 +87,7 @@ const Index = () => {
     }));
     
     // Clear error when user starts typing
-    if (formErrors[name as keyof typeof formErrors]) {
+    if (formErrors[name as keyof FormErrors]) {
       setFormErrors(prev => ({
         ...prev,
         [name]: ''
